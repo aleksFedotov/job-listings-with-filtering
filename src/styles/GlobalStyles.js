@@ -42,6 +42,7 @@ body {
 #root{
   min-height: 100vh;
   width: 100%;
+  padding: 2rem;
 }
 `;
 
