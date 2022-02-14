@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import styled from 'styled-components';
-
-import img from '../../images/photosnap.svg';
+import JobContext from '../../context/JobsContext';
+import JobTag from './JobTag';
 
 const JobContainer = styled.div`
   width: 100%;
@@ -17,10 +17,10 @@ const JobContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 3rem 3.5rem;
-  gap: 15rem;
+  gap: 10rem;
 `;
 
-const JobContext = styled.div`
+const JobContextContainer = styled.div`
   display: flex;
   gap: 2.5rem;
 `;
@@ -90,54 +90,35 @@ const TagsContainer = styled.div`
   display: flex;
   gap: 1.8rem;
   flex-wrap: wrap;
-
-  .tag {
-    color: var(--desaturated-dark-cyan);
-    background-color: var(--filter-tablets);
-    padding: 1rem 0.8rem;
-    font-size: 1.2rem;
-    font-weight: 700;
-    cursor: pointer;
-    border-radius: 0.5rem;
-
-    &:hover {
-      background-color: var(--desaturated-dark-cyan);
-      color: #fff;
-    }
-  }
 `;
 
 const Job = (props) => {
-  const {
-    company,
-    logo,
-    featured,
-    position,
-    role,
-    level,
-    postedAt,
-    contract,
-    location,
-    languages,
-    tools,
-  } = props.job;
+  const jobCtx = useContext(JobContext);
+  const { company, featured, position, postedAt, contract, location, tags } =
+    props.job;
 
   const imgSrc = require(`../../images/${company
     .replace(/\s/g, '-')
     .replace('.', '')
     .toLowerCase()}.svg`);
 
-  const tags = [role, level, ...languages, ...tools];
-
   return (
     <JobContainer isFeatured={featured}>
-      <JobContext>
+      <JobContextContainer>
         <Logo imgSrc={imgSrc} />
         <JobInfo>
           <InfoHeader>
             <p className="company-title">{company}</p>
-            {props.job.new && <div className="info-tag new">new!</div>}
-            {featured && <div className="info-tag featured">featured</div>}
+            {props.job.new && (
+              <div aria-label="new-tag" className="info-tag new">
+                new!
+              </div>
+            )}
+            {featured && (
+              <div new-tag="featured-tag" className="info-tag featured">
+                featured
+              </div>
+            )}
           </InfoHeader>
           <Position>{position}</Position>
           <InfoFooter>
@@ -148,12 +129,10 @@ const Job = (props) => {
             <p>{location}</p>
           </InfoFooter>
         </JobInfo>
-      </JobContext>
+      </JobContextContainer>
       <TagsContainer>
         {tags.map((tag) => (
-          <div className="tag" key={tag}>
-            {tag}
-          </div>
+          <JobTag key={tag} tag={tag} />
         ))}
       </TagsContainer>
     </JobContainer>

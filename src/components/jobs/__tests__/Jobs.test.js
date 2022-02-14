@@ -50,7 +50,7 @@ describe('Job component testing', () => {
   test('Posted time', () => {
     render(<Job job={job} />);
 
-    const postedAt = screen.getAllByText(/1d ago/i);
+    const postedAt = screen.getByText(/1d ago/i);
 
     expect(postedAt).toBeInTheDocument();
   });
@@ -72,7 +72,7 @@ describe('Job component testing', () => {
   test('Right number of tags', () => {
     render(<Job job={job} />);
 
-    const tags = screen.getAllByLabelText(/tag/i);
+    const tags = screen.getAllByLabelText('tag');
 
     expect(tags).toEqual(4);
   });

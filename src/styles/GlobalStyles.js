@@ -36,6 +36,7 @@ body {
     font-family: 'Spartan', sans-serif;
     background-color: var(--bg-main);
     
+    
    
 }
 
@@ -43,6 +44,7 @@ body {
   min-height: 100vh;
   width: 100%;
   padding: 2rem;
+  
 }
 `;
 

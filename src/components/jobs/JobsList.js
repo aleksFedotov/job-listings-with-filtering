@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import styled from 'styled-components';
 
 import Job from './Job';
-import jobsData from '../../data.json';
+
+import JobContext from '../../context/JobsContext';
 
 const Jobs = styled.li`
   list-style: none;
   margin: 0 auto;
+
   max-width: 110rem;
   width: 100%;
-  margin-top: 5rem;
+  margin-top: 4rem;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
 `;
 
 const JobsList = () => {
+  const jobCtx = useContext(JobContext);
+
+  const jobArr = jobCtx.data.filter((job) =>
+    jobCtx.filterTags.every((filter) => job.tags.includes(filter))
+  );
+
   return (
     <Jobs>
-      {jobsData.map((job) => (
-        <Job key={job.id} job={job} />
+      {jobArr.map((job) => (
+        <Job key={job.id} job={job} aria-label="job" />
       ))}
     </Jobs>
   );
