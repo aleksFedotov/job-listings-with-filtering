@@ -16,6 +16,7 @@ const job = {
   location: 'Remote',
   languages: ['Python'],
   tools: ['React'],
+  tags: ['Fullstack', 'Midweight', 'Python', 'React'],
 };
 
 describe('Job component testing', () => {
@@ -57,7 +58,7 @@ describe('Job component testing', () => {
   test('Contract', () => {
     render(<Job job={job} />);
 
-    const contract = screen.getByText(/contract/i);
+    const contract = screen.getByText(/Part Time/i);
 
     expect(contract).toBeInTheDocument();
   });

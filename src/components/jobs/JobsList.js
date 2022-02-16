@@ -16,6 +16,10 @@ const Jobs = styled.li`
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+
+  @media (max-width: 1000px) {
+    gap: 4rem;
+  }
 `;
 
 const JobsList = () => {

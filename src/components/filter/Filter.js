@@ -19,6 +19,10 @@ const FilterConteiner = styled.div`
   justify-content: space-between;
   align-items: center;
   z-index: 1;
+
+  @media (max-width: 650px) {
+    padding: 1.8rem;
+  }
 `;
 
 const ClearBtn = styled.button`

@@ -1,9 +1,9 @@
-import { render, screen } from '@testing-library/react';
+// import { render, screen } from '@testing-library/react';
 
-import JobsList from '../JobsList';
+// import JobsList from '../JobsList';
 
-test('Jobs list renders rigth amount of jobs', () => {
-  render(<JobsList />);
-  const jobs = screen.getAllByLabelText('job');
-  expect(jobs.length).toEqual(10);
-});
+// test('Jobs list renders rigth amount of jobs', () => {
+//   render(<JobsList />);
+//   const jobs = screen.getAllByLabelText('job');
+//   expect(jobs.length).toEqual(10);
+// });
