@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 
 import styled from 'styled-components';
-
+import { motion } from 'framer-motion';
 import Job from './Job';
 
 import JobContext from '../../context/JobsContext';
 
-const Jobs = styled.li`
+const Jobs = styled(motion.div)`
   list-style: none;
   margin: 0 auto;
 
@@ -30,7 +30,7 @@ const JobsList = () => {
   );
 
   return (
-    <Jobs>
+    <Jobs layout>
       {jobArr.map((job) => (
         <Job key={job.id} job={job} />
       ))}

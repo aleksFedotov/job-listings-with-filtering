@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import deleteIcon from '../../images/icon-remove.svg';
 
 import JobContext from '../../context/JobsContext';
 
-const FilterTagCotnainer = styled.div`
+const FilterTagCotnainer = styled(motion.div)`
   color: var(--desaturated-dark-cyan);
   background-color: var(--filter-tablets);
   padding-left: 0.8rem;
@@ -18,7 +19,7 @@ const FilterTagCotnainer = styled.div`
   overflow: hidden;
 `;
 
-const DeleteBtn = styled.div`
+const DeleteBtn = styled(motion.div)`
   background: url('${(props) => props.img}');
   background-position: center center;
   background-repeat: no-repeat;
@@ -39,9 +40,9 @@ const FilterTag = (props) => {
     jobCtx.deleteTag(props.tag);
   };
   return (
-    <FilterTagCotnainer aria-label="filter-tag">
-      {props.tag}
-      <DeleteBtn onClick={deleteHandler} img={deleteIcon} />
+    <FilterTagCotnainer aria-label="filter-tag" layout>
+      <motion.p layout>{props.tag}</motion.p>
+      <DeleteBtn layout onClick={deleteHandler} img={deleteIcon} />
     </FilterTagCotnainer>
   );
 };

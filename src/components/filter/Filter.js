@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import JobContext from '../../context/JobsContext';
 import FilterTag from './FilterTag';
+import { motion } from 'framer-motion';
 
 const FilterConteiner = styled.div`
   visibility: ${(props) => (props.isEmpty ? ' hidden' : 'visible')};
@@ -43,7 +44,7 @@ const ClearBtn = styled.button`
   }
 `;
 
-const TagsContainer = styled.div`
+const TagsContainer = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -59,7 +60,7 @@ const Filter = () => {
 
   return (
     <FilterConteiner isEmpty={jobCtx.filterTags.length === 0}>
-      <TagsContainer>
+      <TagsContainer layout>
         {jobCtx.filterTags.map((tag) => (
           <FilterTag key={tag} tag={tag} />
         ))}

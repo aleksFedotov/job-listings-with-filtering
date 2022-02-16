@@ -1,10 +1,11 @@
 import React from 'react';
 
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import JobTag from './JobTag';
 
-const JobContainer = styled.div.attrs({
+const JobContainer = styled(motion.div).attrs({
   'aria-haspopup': 'job',
 })`
   width: 100%;
@@ -162,7 +163,14 @@ const Job = (props) => {
     .toLowerCase()}.svg`);
 
   return (
-    <JobContainer isFeatured={featured} aria-label="job">
+    <JobContainer
+      isFeatured={featured}
+      aria-label="job"
+      layout
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+    >
       <JobContextContainer>
         <Logo imgSrc={imgSrc} />
         <JobInfo>
