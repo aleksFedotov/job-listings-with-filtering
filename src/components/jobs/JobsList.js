@@ -32,7 +32,7 @@ const JobsList = () => {
   return (
     <Jobs>
       {jobArr.map((job) => (
-        <Job key={job.id} job={job} aria-label="job" />
+        <Job key={job.id} job={job} />
       ))}
     </Jobs>
   );

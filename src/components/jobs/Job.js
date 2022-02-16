@@ -4,7 +4,9 @@ import styled from 'styled-components';
 
 import JobTag from './JobTag';
 
-const JobContainer = styled.div`
+const JobContainer = styled.div.attrs({
+  'aria-haspopup': 'job',
+})`
   width: 100%;
   height: 15rem;
   height: fit-content;
@@ -160,7 +162,7 @@ const Job = (props) => {
     .toLowerCase()}.svg`);
 
   return (
-    <JobContainer isFeatured={featured}>
+    <JobContainer isFeatured={featured} aria-label="job">
       <JobContextContainer>
         <Logo imgSrc={imgSrc} />
         <JobInfo>

@@ -75,6 +75,6 @@ describe('Job component testing', () => {
 
     const tags = screen.getAllByLabelText('tag');
 
-    expect(tags).toEqual(4);
+    expect(tags.length).toEqual(4);
   });
 });
